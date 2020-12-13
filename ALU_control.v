@@ -17,7 +17,7 @@ output reg     [2:0] ALUCtrl_o;
 `define ADDI 3'b110
 `define SRAI 3'b111
 
-always @ (funct_i or ALUOp_i) begin
+always @ (*) begin
   if (ALUOp_i[0] == 1) begin
     if (funct_i[2:0] == 3'b000)
       ALUCtrl_o = `ADDI;

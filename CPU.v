@@ -12,16 +12,16 @@ input               start_i;
 
 wire          [31:0] pc_next;
 wire          [31:0] pc_now;
-wire          [31:0] instr;
 wire          [2:0] ALUCtrl;
 wire          [1:0] ALUOp;
 wire                ALUSrc;
 wire                RegWrite;
-wire         [31:0] read_data_1;
-wire          [31:0] read_data_2;
 wire          [31:0] sign_extended;
 wire          [31:0] ALU_data;
 wire          [31:0] mux_data;
+wire           [31:0] instr;
+wire           [31:0] read_data_1;
+wire           [31:0] read_data_2;
 
 Control Control(
     .Op_i       (instr[6:0]),
@@ -61,23 +61,18 @@ Registers Registers(
     .RS2data_o   (read_data_2) 
 );
 
-/*
 MUX32 MUX_ALUSrc(
     .data1_i    (read_data_2),
     .data2_i    (sign_extended),
     .select_i   (ALUSrc),
     .data_o     (mux_data)
 );
-*/
 
-/*
 Sign_Extend Sign_Extend(
     .data_i     (instr[31:20]),
     .data_o     (sign_extended)
 );
-*/
   
-/*
 ALU ALU(
     .data1_i    (read_data_1),
     .data2_i    (mux_data),
@@ -91,7 +86,6 @@ ALU_Control ALU_Control(
     .ALUOp_i    (ALUOp),
     .ALUCtrl_o  (ALUCtrl)
 );
-*/
 
 endmodule
 

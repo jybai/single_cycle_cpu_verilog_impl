@@ -21,7 +21,7 @@ output                   Zero_o; // abandon since not used
 `define ADDI 3'b110
 `define SRAI 3'b111
 
-always@ (data1_i or data2_i or ALUCtrl_i) begin
+always@ (*) begin
   case (ALUCtrl_i)
     `AND: data_o = data1_i & data2_i; 
     `XOR: data_o = data1_i ^ data2_i;
